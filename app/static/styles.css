@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Work+Sans:wght@400;600&display=swap");
+
+:root {
+  color-scheme: light;
+  --bg: #f4f2ed;
+  --panel: #ffffff;
+  --accent: #0f5b3d;
+  --accent-soft: #d7eadf;
+  --text: #1d1b18;
+  --muted: #6a625c;
+  --border: #ded6cc;
+  --shadow: 0 20px 40px rgba(16, 20, 18, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Work Sans", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #f7f4ef 0%, var(--bg) 60%);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+}
+
+.hero h1 {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 720px;
+}
+
+.panel {
+  margin-top: 32px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+form {
+  display: grid;
+  gap: 18px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+select,
+input,
+button {
+  font: inherit;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(15, 91, 61, 0.2);
+}
+
+.result {
+  margin-top: 28px;
+}
+
+.result h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.summary-grid,
+.stakeholder-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.summary-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.stakeholder-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.stakeholder-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(16, 20, 18, 0.08);
+  padding: 18px;
+}
+
+.stakeholder-card h3 {
+  margin-top: 0;
+}
+
+.summary-card {
+  position: relative;
+}
+
+.summary-label {
+  margin: -4px 0 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.metrics {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.metrics .metric-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.95rem;
+}
+
+.metrics dt {
+  font-weight: 600;
+}
+
+.metrics dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.metric-best {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.metric-delta {
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+.impact-list {
+  padding-left: 18px;
+  margin: 12px 0;
+}
+
+.narrative {
+  margin: 0;
+  color: var(--muted);
+}
+
+pre {
+  background: var(--accent-soft);
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 91, 61, 0.15);
+  max-height: 360px;
+  overflow: auto;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .panel {
+    padding: 20px;
+  }
+}

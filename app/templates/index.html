@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stakeholder Impact Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <h1>Stakeholder Impact Dashboard</h1>
+        <p class="subtitle">Sprint 0 stub - explore policy choices and view placeholder impacts.</p>
+      </header>
+
+      <section class="panel">
+        <form id="evaluation-form">
+          <label class="field">
+            <span>Policy choice</span>
+            <select id="policy-choice" name="policy_choice" required>
+              <option value="DEV_CAPITALISE_VS_EXPENSE">Development: Capitalise vs Expense</option>
+              <option value="IP_FAIR_VALUE_VS_COST">IP: Fair Value vs Cost</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Company name</span>
+            <input id="company-name" name="company_name" type="text" placeholder="SampleCo" />
+          </label>
+
+          <button type="submit">Evaluate</button>
+        </form>
+
+        <div class="result">
+          <section class="summary">
+            <h2>Summary</h2>
+            <div class="summary-grid" id="summary-grid"></div>
+          </section>
+
+          <section class="stakeholders">
+            <h2>Stakeholder impacts</h2>
+            <div class="stakeholder-grid" id="stakeholder-grid"></div>
+          </section>
+
+          <details class="debug">
+            <summary>Debug JSON</summary>
+            <pre id="result-output">{}</pre>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

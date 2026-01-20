@@ -2,6 +2,10 @@ const form = document.getElementById("evaluation-form");
 const output = document.getElementById("result-output");
 const policySelect = document.getElementById("policy-choice");
 const companyInput = document.getElementById("company-name");
+const profitAfterTaxInput = document.getElementById("profit-after-tax");
+const equityInput = document.getElementById("equity");
+const debtInput = document.getElementById("debt");
+const sharesOutstandingInput = document.getElementById("shares-outstanding");
 const stakeholderGrid = document.getElementById("stakeholder-grid");
 const summaryGrid = document.getElementById("summary-grid");
 
@@ -10,19 +14,6 @@ const metricFormatters = {
   gearing: (value) => `${value.toFixed(1)}%`,
   bonus_estimate: (value) => value.toFixed(1),
   prudence_score: (value) => value.toFixed(1),
-};
-
-const setMetricValue = (container, key, value) => {
-  const target = container.querySelector(`[data-metric="${key}"]`);
-  if (!target) {
-    return;
-  }
-  if (value === undefined || value === null || Number.isNaN(value)) {
-    target.textContent = "-";
-    return;
-  }
-  const formatter = metricFormatters[key];
-  target.textContent = formatter ? formatter(value) : String(value);
 };
 
 const getBestMetrics = (scenarios) => {
@@ -81,7 +72,7 @@ const renderSummaryCards = (scenarios) => {
 
       const label = document.createElement("dt");
       label.textContent = metricKey
-        .replace("_", " ")
+        .replace(/_/g, " ")
         .replace(/\b\w/g, (char) => char.toUpperCase());
 
       const value = document.createElement("dd");
@@ -99,7 +90,7 @@ const renderSummaryCards = (scenarios) => {
           const delta = metricValue - baseMetrics[metricKey];
           const deltaText = document.createElement("span");
           deltaText.className = "metric-delta";
-          deltaText.textContent = `Δ ${formatDelta(metricKey, delta)}`;
+          deltaText.textContent = `Delta ${formatDelta(metricKey, delta)}`;
           value.appendChild(deltaText);
         }
 
@@ -168,6 +159,14 @@ const renderError = (message) => {
   render({ error: message });
 };
 
+const toNumber = (input) => {
+  if (!input) {
+    return undefined;
+  }
+  const value = Number(input.value);
+  return Number.isFinite(value) ? value : undefined;
+};
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   render({ status: "Submitting..." });
@@ -176,6 +175,10 @@ form.addEventListener("submit", async (event) => {
     policy_choice: policySelect.value,
     company_name: companyInput.value.trim() || "SampleCo",
     currency: "GBP",
+    profit_after_tax: toNumber(profitAfterTaxInput),
+    equity: toNumber(equityInput),
+    debt: toNumber(debtInput),
+    shares_outstanding: toNumber(sharesOutstandingInput),
   };
 
   try {
